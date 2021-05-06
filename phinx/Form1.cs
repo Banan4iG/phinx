@@ -31,14 +31,14 @@ namespace phinx
 		{
 			conn = new MySqlConnection("server=127.0.0.1;userid=root;password=root;database=phinx_db;sslMode=none");
 			InitializeComponent();
+			this.StartPosition = FormStartPosition.CenterScreen;
 		}
 		
 		private void Form1_Load(object sender, EventArgs e)
 		{
 			if(СheckConnection(conn))
 			{
-				//MigView();
-				
+				MigView();
 			}
 			ComboBoxAddItems();
 		}
@@ -60,13 +60,17 @@ namespace phinx
 			p.Start();
 			p.Close();
 			Thread.Sleep(500);
+			textBox1.Text = "";
 			if(checkBox1.Checked == true)
 			{
 				string[] listMig = Directory.GetFiles(@"E:\OpenServer\domains\localhost\phinx\migrations");
 				int lastEl = listMig.Length;
 				Process.Start(listMig[lastEl-1]);
 			}
+			Thread.Sleep(500);
 			ComboBoxAddItems();
+			MigView();
+
 		}
 
 		private void button3_Click(object sender, EventArgs e)
@@ -80,6 +84,8 @@ namespace phinx
 			p.StartInfo = startInfo;
 			p.Start();
 			p.Close();
+			Thread.Sleep(500);
+			MigView();
 		}
 
 		private void button2_Click(object sender, EventArgs e)
@@ -93,6 +99,8 @@ namespace phinx
 			p.StartInfo = startInfo;
 			p.Start();
 			p.Close();
+			Thread.Sleep(500);
+			MigView();
 		}
 
 		private void comboBox1_SelectedIndexChanged(object sender, EventArgs e)
@@ -120,18 +128,6 @@ namespace phinx
 		private void открытьПапкуСМиграциямиToolStripMenuItem_Click(object sender, EventArgs e)
 		{
 			Process.Start(@"E:\OpenServer\domains\localhost\phinx\migrations");
-
-			/*
-			Process p = new Process();
-			ProcessStartInfo startInfo = new ProcessStartInfo();
-			startInfo.UseShellExecute = false;
-			startInfo.RedirectStandardOutput = true;
-			startInfo.FileName = "explorer.exe";
-			startInfo.Arguments = @"E:\OpenServer\domains\localhost\phinx\migrations";
-			p.StartInfo = startInfo;
-			p.Start();
-			p.Close();
-			*/
 		}
 
 		private void открытьКонфигурационныйФайлPhinxToolStripMenuItem_Click(object sender, EventArgs e)
@@ -147,56 +143,6 @@ namespace phinx
 
 		private void MigView()
 		{
-			/*
-			listView1.Items.Clear();
-			string pathToMigrates = @"E:\OpenServer\domains\localhost\phinx\migrations";
-			List<string> listfiles = (from a in Directory.GetFiles(pathToMigrates) select Path.GetFileName(a)).ToList();
-			List<string> numberMigFromDir = new List<string>();
-			List<string> numberMigFromTable = new List<string>();
-			foreach (var el in listfiles)
-			{
-				string[] splitstr = el.Split('_');
-				numberMigFromDir.Add(splitstr[0]);
- 			}
-			conn.Open();
-			MySqlCommand command = new MySqlCommand("SELECT version FROM phinxlog", conn);
-			MySqlDataReader reader = command.ExecuteReader();
-			while(reader.Read())
-			{
-				numberMigFromTable.Add(reader[0].ToString());
-			}
-			numberMigFromDir.Sort();
-			numberMigFromTable.Sort();
-			conn.Close();
-			for (int i = 0; i < numberMigFromDir.Count; i++)
-			{
-				try
-				{
-					if(numberMigFromDir[i] == numberMigFromTable[i])
-					{
-						conn.Open();
-						string sql = "SELECT migration_name FROM phinxlog WHERE version=" + numberMigFromTable[i];
-						MySqlCommand command1 = new MySqlCommand(sql, conn);
-						MySqlDataReader reader1 = command1.ExecuteReader();
-						while (reader1.Read())
-						{
-							string name = reader1[0].ToString();
-							listView1.Items.Add(name);
-							listView1.Items[listView1.Items.Count - 1].SubItems.Add("Done");
-						}
-						conn.Close();
-					}
-				}
-				catch
-				{
-					//MySqlCommand command1 = new MySqlCommand("SELECT migration_name FROM phinxlog WHERE version='" + numberMigFromTable + "'", conn);
-					//MySqlDataReader reader1 = command.ExecuteReader();
-					//string name = reader[0].ToString();
-					listView1.Items.Add("№" + numberMigFromDir[i]);
-					listView1.Items[listView1.Items.Count - 1].SubItems.Add("None");
-				}
-			}*/
-
 			Process p = new Process();
 			ProcessStartInfo startInfo = new ProcessStartInfo();
 			startInfo.UseShellExecute = false;
@@ -209,14 +155,35 @@ namespace phinx
 			string reads = reader.ReadToEnd();
 			p.Close();
 
-			string pattern = @"(?=Status\s)([\s\S]+)(?=\r\n\r\n)";
+			//string pattern = @"(?=Status\s)([\s\S]+)(?=\r\n\r\n)";
+			string pattern2 = @"(?<=--\s)([\s\S]+)(?=\r\n\r\n)";
 			RegexOptions option = RegexOptions.Multiline;
-			textBox3.Clear();
+			listView1.Items.Clear();
 			string result = "";
-			foreach (Match m in Regex.Matches(reads, pattern, option))
+			foreach (Match m in Regex.Matches(reads, pattern2, option))
 			{
 				result += m.Value;
-				textBox3.Text += result;
+			}
+			string[] statusArr = result.Split('\n');
+			for (int i=1; i<statusArr.Length; i++)
+			{
+				string[] strArr = statusArr[i].Split(' ');
+				if(strArr.Length == 50)
+				{
+					listView1.Items.Add(strArr[3]);
+					listView1.Items[listView1.Items.Count - 1].SubItems.Add(strArr[5]);
+					listView1.Items[listView1.Items.Count - 1].SubItems.Add(" ");
+					listView1.Items[listView1.Items.Count - 1].SubItems.Add(" ");
+					listView1.Items[listView1.Items.Count - 1].SubItems.Add(strArr[49]);
+				}
+				else
+				{
+					listView1.Items.Add(strArr[5]);
+					listView1.Items[listView1.Items.Count - 1].SubItems.Add(strArr[7]);
+					listView1.Items[listView1.Items.Count - 1].SubItems.Add(strArr[9]+ strArr[10]);
+					listView1.Items[listView1.Items.Count - 1].SubItems.Add(strArr[12] + strArr[13]);
+					listView1.Items[listView1.Items.Count - 1].SubItems.Add(strArr[15]);
+				}
 			}
 		}
 
