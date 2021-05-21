@@ -50,6 +50,18 @@ namespace phinx
 
 		private void button1_Click(object sender, EventArgs e)
 		{
+			string pattern = @"(?=[A-Z])([A-Z][a-z])";
+			RegexOptions option = RegexOptions.Multiline;
+			string result = "";
+			foreach (Match m in Regex.Matches(textBox1.Text, pattern, option))
+			{
+				result += m.Value;
+			}
+			if(result.Length != 2)
+			{
+				return;
+			}
+
 			Process p = new Process();
 			ProcessStartInfo startInfo = new ProcessStartInfo();
 			startInfo.UseShellExecute = false;
@@ -223,6 +235,11 @@ namespace phinx
 				pathDictionary.Add(trimedDictionaryKey, path);
 				comboBox1.Items.Add(trimedDictionaryKey);
 			}
+		}
+
+		private void listView1_SelectedIndexChanged(object sender, EventArgs e)
+		{
+
 		}
 	}
 }

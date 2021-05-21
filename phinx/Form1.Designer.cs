@@ -33,20 +33,20 @@
 			this.button2 = new System.Windows.Forms.Button();
 			this.button3 = new System.Windows.Forms.Button();
 			this.groupBox1 = new System.Windows.Forms.GroupBox();
-			this.checkBox1 = new System.Windows.Forms.CheckBox();
-			this.button4 = new System.Windows.Forms.Button();
-			this.comboBox1 = new System.Windows.Forms.ComboBox();
-			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-			this.опцииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.проверитьПодключениеКБазеДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.открытьПапкуСМиграциямиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
-			this.открытьКонфигурационныйФайлPhinxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.listView1 = new System.Windows.Forms.ListView();
 			this.columnHeader1 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader2 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader3 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader4 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
 			this.columnHeader5 = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+			this.button4 = new System.Windows.Forms.Button();
+			this.checkBox1 = new System.Windows.Forms.CheckBox();
+			this.comboBox1 = new System.Windows.Forms.ComboBox();
+			this.menuStrip1 = new System.Windows.Forms.MenuStrip();
+			this.опцииToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.проверитьПодключениеКБазеДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.открытьПапкуСМиграциямиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.открытьКонфигурационныйФайлPhinxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.groupBox1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
 			this.SuspendLayout();
@@ -106,6 +106,58 @@
 			this.groupBox1.TabStop = false;
 			this.groupBox1.Text = "Миграции";
 			// 
+			// listView1
+			// 
+			this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnHeader1,
+            this.columnHeader2,
+            this.columnHeader3,
+            this.columnHeader4,
+            this.columnHeader5});
+			this.listView1.GridLines = true;
+			this.listView1.HideSelection = false;
+			this.listView1.Location = new System.Drawing.Point(6, 46);
+			this.listView1.Name = "listView1";
+			this.listView1.Size = new System.Drawing.Size(571, 166);
+			this.listView1.TabIndex = 7;
+			this.listView1.UseCompatibleStateImageBehavior = false;
+			this.listView1.View = System.Windows.Forms.View.Details;
+			this.listView1.SelectedIndexChanged += new System.EventHandler(this.listView1_SelectedIndexChanged);
+			// 
+			// columnHeader1
+			// 
+			this.columnHeader1.Text = "Status";
+			// 
+			// columnHeader2
+			// 
+			this.columnHeader2.Text = "[Migration ID]";
+			this.columnHeader2.Width = 107;
+			// 
+			// columnHeader3
+			// 
+			this.columnHeader3.Text = "Started";
+			this.columnHeader3.Width = 115;
+			// 
+			// columnHeader4
+			// 
+			this.columnHeader4.Text = "Finished";
+			this.columnHeader4.Width = 115;
+			// 
+			// columnHeader5
+			// 
+			this.columnHeader5.Text = "Migration Name";
+			this.columnHeader5.Width = 140;
+			// 
+			// button4
+			// 
+			this.button4.Location = new System.Drawing.Point(246, 245);
+			this.button4.Name = "button4";
+			this.button4.Size = new System.Drawing.Size(75, 23);
+			this.button4.TabIndex = 2;
+			this.button4.Text = "Открыть";
+			this.button4.UseVisualStyleBackColor = true;
+			this.button4.Click += new System.EventHandler(this.button4_Click);
+			// 
 			// checkBox1
 			// 
 			this.checkBox1.AutoSize = true;
@@ -118,18 +170,9 @@
 			this.checkBox1.Text = "Открыть файл созданной миграции";
 			this.checkBox1.UseVisualStyleBackColor = true;
 			// 
-			// button4
-			// 
-			this.button4.Location = new System.Drawing.Point(246, 245);
-			this.button4.Name = "button4";
-			this.button4.Size = new System.Drawing.Size(75, 23);
-			this.button4.TabIndex = 2;
-			this.button4.Text = "Открыть";
-			this.button4.UseVisualStyleBackColor = true;
-			this.button4.Click += new System.EventHandler(this.button4_Click);
-			// 
 			// comboBox1
 			// 
+			this.comboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
 			this.comboBox1.FormattingEnabled = true;
 			this.comboBox1.Location = new System.Drawing.Point(6, 247);
 			this.comboBox1.Name = "comboBox1";
@@ -177,47 +220,6 @@
 			this.открытьКонфигурационныйФайлPhinxToolStripMenuItem.Size = new System.Drawing.Size(299, 22);
 			this.открытьКонфигурационныйФайлPhinxToolStripMenuItem.Text = "Открыть конфигурационный файл Phinx";
 			this.открытьКонфигурационныйФайлPhinxToolStripMenuItem.Click += new System.EventHandler(this.открытьКонфигурационныйФайлPhinxToolStripMenuItem_Click);
-			// 
-			// listView1
-			// 
-			this.listView1.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
-            this.columnHeader1,
-            this.columnHeader2,
-            this.columnHeader3,
-            this.columnHeader4,
-            this.columnHeader5});
-			this.listView1.GridLines = true;
-			this.listView1.HideSelection = false;
-			this.listView1.Location = new System.Drawing.Point(6, 46);
-			this.listView1.Name = "listView1";
-			this.listView1.Size = new System.Drawing.Size(571, 166);
-			this.listView1.TabIndex = 7;
-			this.listView1.UseCompatibleStateImageBehavior = false;
-			this.listView1.View = System.Windows.Forms.View.Details;
-			// 
-			// columnHeader1
-			// 
-			this.columnHeader1.Text = "Status";
-			// 
-			// columnHeader2
-			// 
-			this.columnHeader2.Text = "[Migration ID]";
-			this.columnHeader2.Width = 107;
-			// 
-			// columnHeader3
-			// 
-			this.columnHeader3.Text = "Started";
-			this.columnHeader3.Width = 115;
-			// 
-			// columnHeader4
-			// 
-			this.columnHeader4.Text = "Finished";
-			this.columnHeader4.Width = 115;
-			// 
-			// columnHeader5
-			// 
-			this.columnHeader5.Text = "Migration Name";
-			this.columnHeader5.Width = 140;
 			// 
 			// Form1
 			// 
