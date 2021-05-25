@@ -47,8 +47,18 @@
 			this.проверитьПодключениеКБазеДанныхToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.открытьПапкуСМиграциямиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.открытьКонфигурационныйФайлPhinxToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+			this.groupBox2 = new System.Windows.Forms.GroupBox();
+			this.button5 = new System.Windows.Forms.Button();
+			this.textBox2 = new System.Windows.Forms.TextBox();
+			this.checkBox2 = new System.Windows.Forms.CheckBox();
+			this.button6 = new System.Windows.Forms.Button();
+			this.comboBox2 = new System.Windows.Forms.ComboBox();
+			this.button7 = new System.Windows.Forms.Button();
+			this.button8 = new System.Windows.Forms.Button();
+			this.открытьПапкуСПосевамиToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
 			this.groupBox1.SuspendLayout();
 			this.menuStrip1.SuspendLayout();
+			this.groupBox2.SuspendLayout();
 			this.SuspendLayout();
 			// 
 			// textBox1
@@ -150,7 +160,7 @@
 			// 
 			// button4
 			// 
-			this.button4.Location = new System.Drawing.Point(246, 245);
+			this.button4.Location = new System.Drawing.Point(245, 245);
 			this.button4.Name = "button4";
 			this.button4.Size = new System.Drawing.Size(75, 23);
 			this.button4.TabIndex = 2;
@@ -195,6 +205,7 @@
 			this.опцииToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.проверитьПодключениеКБазеДанныхToolStripMenuItem,
             this.открытьПапкуСМиграциямиToolStripMenuItem,
+            this.открытьПапкуСПосевамиToolStripMenuItem,
             this.открытьКонфигурационныйФайлPhinxToolStripMenuItem});
 			this.опцииToolStripMenuItem.Name = "опцииToolStripMenuItem";
 			this.опцииToolStripMenuItem.Size = new System.Drawing.Size(56, 20);
@@ -221,21 +232,118 @@
 			this.открытьКонфигурационныйФайлPhinxToolStripMenuItem.Text = "Открыть конфигурационный файл Phinx";
 			this.открытьКонфигурационныйФайлPhinxToolStripMenuItem.Click += new System.EventHandler(this.открытьКонфигурационныйФайлPhinxToolStripMenuItem_Click);
 			// 
+			// groupBox2
+			// 
+			this.groupBox2.Controls.Add(this.button8);
+			this.groupBox2.Controls.Add(this.button6);
+			this.groupBox2.Controls.Add(this.button7);
+			this.groupBox2.Controls.Add(this.checkBox2);
+			this.groupBox2.Controls.Add(this.button5);
+			this.groupBox2.Controls.Add(this.comboBox2);
+			this.groupBox2.Controls.Add(this.textBox2);
+			this.groupBox2.Location = new System.Drawing.Point(12, 321);
+			this.groupBox2.Name = "groupBox2";
+			this.groupBox2.Size = new System.Drawing.Size(583, 132);
+			this.groupBox2.TabIndex = 8;
+			this.groupBox2.TabStop = false;
+			this.groupBox2.Text = "Посев данных";
+			this.groupBox2.Enter += new System.EventHandler(this.groupBox2_Enter);
+			// 
+			// button5
+			// 
+			this.button5.Location = new System.Drawing.Point(460, 15);
+			this.button5.Name = "button5";
+			this.button5.Size = new System.Drawing.Size(118, 23);
+			this.button5.TabIndex = 2;
+			this.button5.Text = "Создать посев";
+			this.button5.UseVisualStyleBackColor = true;
+			this.button5.Click += new System.EventHandler(this.button5_Click);
+			// 
+			// textBox2
+			// 
+			this.textBox2.Location = new System.Drawing.Point(7, 17);
+			this.textBox2.Name = "textBox2";
+			this.textBox2.Size = new System.Drawing.Size(233, 20);
+			this.textBox2.TabIndex = 1;
+			this.textBox2.TextChanged += new System.EventHandler(this.textBox2_TextChanged);
+			// 
+			// checkBox2
+			// 
+			this.checkBox2.AutoSize = true;
+			this.checkBox2.Checked = true;
+			this.checkBox2.CheckState = System.Windows.Forms.CheckState.Checked;
+			this.checkBox2.Location = new System.Drawing.Point(246, 19);
+			this.checkBox2.Name = "checkBox2";
+			this.checkBox2.Size = new System.Drawing.Size(200, 17);
+			this.checkBox2.TabIndex = 6;
+			this.checkBox2.Text = "Открыть файл созданного посева";
+			this.checkBox2.UseVisualStyleBackColor = true;
+			// 
+			// button6
+			// 
+			this.button6.Location = new System.Drawing.Point(6, 43);
+			this.button6.Name = "button6";
+			this.button6.Size = new System.Drawing.Size(173, 23);
+			this.button6.TabIndex = 7;
+			this.button6.Text = "Выполнить все посевы";
+			this.button6.UseVisualStyleBackColor = true;
+			this.button6.Click += new System.EventHandler(this.button6_Click);
+			// 
+			// comboBox2
+			// 
+			this.comboBox2.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
+			this.comboBox2.FormattingEnabled = true;
+			this.comboBox2.Location = new System.Drawing.Point(7, 72);
+			this.comboBox2.Name = "comboBox2";
+			this.comboBox2.Size = new System.Drawing.Size(234, 21);
+			this.comboBox2.TabIndex = 0;
+			this.comboBox2.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+			// 
+			// button7
+			// 
+			this.button7.Location = new System.Drawing.Point(247, 70);
+			this.button7.Name = "button7";
+			this.button7.Size = new System.Drawing.Size(75, 23);
+			this.button7.TabIndex = 2;
+			this.button7.Text = "Открыть";
+			this.button7.UseVisualStyleBackColor = true;
+			this.button7.Click += new System.EventHandler(this.button7_Click);
+			// 
+			// button8
+			// 
+			this.button8.Location = new System.Drawing.Point(6, 99);
+			this.button8.Name = "button8";
+			this.button8.Size = new System.Drawing.Size(173, 23);
+			this.button8.TabIndex = 7;
+			this.button8.Text = "Выполнить выбранный посев";
+			this.button8.UseVisualStyleBackColor = true;
+			this.button8.Click += new System.EventHandler(this.button8_Click);
+			// 
+			// открытьПапкуСПосевамиToolStripMenuItem
+			// 
+			this.открытьПапкуСПосевамиToolStripMenuItem.Name = "открытьПапкуСПосевамиToolStripMenuItem";
+			this.открытьПапкуСПосевамиToolStripMenuItem.Size = new System.Drawing.Size(299, 22);
+			this.открытьПапкуСПосевамиToolStripMenuItem.Text = "Открыть папку с посевами";
+			this.открытьПапкуСПосевамиToolStripMenuItem.Click += new System.EventHandler(this.открытьПапкуСПосевамиToolStripMenuItem_Click);
+			// 
 			// Form1
 			// 
 			this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
 			this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-			this.ClientSize = new System.Drawing.Size(608, 334);
+			this.ClientSize = new System.Drawing.Size(608, 462);
+			this.Controls.Add(this.groupBox2);
 			this.Controls.Add(this.groupBox1);
 			this.Controls.Add(this.menuStrip1);
 			this.MainMenuStrip = this.menuStrip1;
 			this.Name = "Form1";
-			this.Text = "Form1";
+			this.Text = "Управление миграциями Phinx";
 			this.Load += new System.EventHandler(this.Form1_Load);
 			this.groupBox1.ResumeLayout(false);
 			this.groupBox1.PerformLayout();
 			this.menuStrip1.ResumeLayout(false);
 			this.menuStrip1.PerformLayout();
+			this.groupBox2.ResumeLayout(false);
+			this.groupBox2.PerformLayout();
 			this.ResumeLayout(false);
 			this.PerformLayout();
 
@@ -261,6 +369,15 @@
 		private System.Windows.Forms.ColumnHeader columnHeader3;
 		private System.Windows.Forms.ColumnHeader columnHeader4;
 		private System.Windows.Forms.ColumnHeader columnHeader5;
+		private System.Windows.Forms.GroupBox groupBox2;
+		private System.Windows.Forms.CheckBox checkBox2;
+		private System.Windows.Forms.Button button5;
+		private System.Windows.Forms.TextBox textBox2;
+		private System.Windows.Forms.Button button6;
+		private System.Windows.Forms.Button button7;
+		private System.Windows.Forms.ComboBox comboBox2;
+		private System.Windows.Forms.Button button8;
+		private System.Windows.Forms.ToolStripMenuItem открытьПапкуСПосевамиToolStripMenuItem;
 	}
 }
 
